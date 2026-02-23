@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>login</title>
+        <link rel="stylesheet" href="./css/registrazione.css">
+    </head>
+
+    <body>
+        <div id="container">
+            Inserisci qui sotto i tuoi dati:
+            <form method="post" id="dataForm">
+                <input type="text" name="username" id="username" placeholder="username" minlength="3" maxlength="30"> <br>
+                <p id="errorUsername" hidden>l'username esiste già</p>
+                <p id="errorChar" hidden>l'username deve contenere almeno una lettera e non può contenere spazi</p>
+                <input type="password" name="psw" id="psw" placeholder="password" minlength="6" maxlength="64"> <br>
+                <p id="errorNumber" hidden>la password deve contenere almeno un numero</p>
+                <p id="errorCharPsw" hidden>La password deve essere minimo di 6 caratteri e non può contenere i caratteri: ` “ ‘ < > ; , </p>
+                <button type="submit" disabled="yes" id="btn">Invia</button>
+            </form>
+            <br><p>Se la registrazione andrà a buon fine, verrai mandato/a alla homepage per effettuare il login!</p>
+        </div> <br>
+        <a class="card" href="./homepage.html">
+            torna alla <span>homepage</span>
+        </a>
+    </body>
+    <script src="./js/config.js"></script>
+    <script src="./js/registrazione.js"></script>
+</html>

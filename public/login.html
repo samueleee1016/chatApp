@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>accedi</title>
+        <link rel="stylesheet" href="./css/login.css">
+    </head>
+    <body>
+        <div id="container">
+            Inserisci qui sotto i tuoi dati:
+            <form action="http://localhost:3000/chatApp/checkLogin" method="post" onsubmit="fValidateDatas(event)" id="dataForm">
+                <input type="text" name="username" id="username" placeholder="username" min="3" max="30"> <br>
+                <p id="errorChar" hidden>l'username deve contenere almeno una lettera</p>
+                <input type="password" name="psw" id="psw" placeholder="password" min="6" max="64"> <br>
+                <p id="errorCharPsw" hidden>La password deve essere minimo di 6 caratteri e non può contenere i caratteri: ` “ ‘ < > ; , </p>
+                <p id="unvalidData" hidden>dati non validi, verifica che username e password siano corretti poi invia di nuovo i dati</p>
+                <p id="validData" hidden>dati validati, ora puoi accedere</p>
+                <button type="submit" disabled="yes" id="btn">Verifica</button>
+            </form>
+        </div> <br>
+        <div id="rateLimited" hidden>
+            <h3>Hai superato il limite di tentativi</h3>
+            <p>Il limite si resetterà tra <span id="minutiRimasti"></span> minuti</p>
+        </div>
+        <a class="card" href="./homepage.html">
+            torna alla <span>homepage</span>
+        </a>
+    </body>
+    <script src="./js/config.js"></script>
+    <script src="./js/login.js"></script>
+</html>

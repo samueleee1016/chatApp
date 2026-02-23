@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #027444;
+    color: #5decb0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+
+    gap: 24px; 
+}
+
+#container {
+    background-color: #3feb78;
+    width: 420px;
+    padding: 30px 35px;
+    border-radius: 16px;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55);
+    color: #055a27;
+    font-size: 17px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 14px;
+    border-radius: 10px;
+    border: 1px solid #1fae55;
+    font-size: 15px;
+    background-color: #eafff2;
+    color: #055a27;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #0b5a1b;
+    box-shadow: 0 0 6px rgba(11, 90, 27, 0.6);
+}
+
+#btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 13px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #0b5a1b;
+    color: #eafff2;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#btn:hover:not(:disabled) {
+    background-color: #055a27;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+}
+
+#btn:disabled {
+    background-color: #7bcfa0;
+    color: #2f6d4d;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+#errorUsername,
+#errorNumber,
+#errorChar,
+#errorCharPsw {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #ff3b3b;
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(255, 59, 59, 0.55);
+}
+
+p {
+    line-height: 1.1;
+}
+
+.card {
+    display: block;
+    background-color: #3feb78;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #055a27;
+    font-size: 18px;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.card:hover {
+    background-color: #2bc05c;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.65);
+}
+
+.card span {
+    color: #0b5a1b; 
+    font-weight: bold;
+}
+
+.card:active {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>myChat</title>
+        <link rel="stylesheet" href="/chatApp/css/myChat.css">
+    </head>
+    <body onload="fGetUsernames()">
+        <a class="card" href="http://localhost:3000/chatApp/homepageUtente">⬅️</a>
+        <h3>Profilo di <span id="myUsername"></span></h3> <br>
+        <div id="otherChats">
+            <table id="otherChatsTable"></table>
+            <p id="noOtherChats" hidden>Non sono presenti altre chat</p>
+        </div> 
+        <div id="thisChat">
+            <h3>chat con <span id="otherUsername"></span></h3> <br>
+            <p id="loadMsgErr" hidden>non sono ancora presenti messaggi nella chat</p>
+            <table id="messages"></table> 
+            <p id="staScrivendo" hidden>sta scrivendo</p>
+            <div id="textSpace">
+                <div id="responseToMessageDiv" hidden>
+                    <p>↪️Rispondendo al messaggio:</p>
+                    <p id="responseToMessagePar"></p>
+                    <button id="closeResponseToMessage">x</button>
+                </div>
+                <input type="text" name="message" id="message" onkeyup="fSendMessage(false, event.key)"> <button onclick="fSendMessage(true)">💬↗️</button>
+            </div>
+        </div>
+    </body>
+    <script src="./js/config.js"></script>
+    <script src="./js/myChat.js"></script>
+</html>

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>homepage</title>
+        <link rel="stylesheet" href="/chatApp/css/homepageUtente.css">
+    </head>
+    <body onload="fLoadUsername()">
+        <a class="card" href="http://localhost:3000/chatApp/homepage">Logout</a>
+
+        <h4>Profilo di <span id="username"></span></h4>
+
+        <div class="popup" id="popup">
+            <p id="par">Questa chat esiste già!</p>
+            <button type="button" id="btnAlert">ok</button>
+        </div>
+
+        <button id="btnNotifiche">🔔</button> <div id="nNotifiche"></div>
+        <div class="popupNotifiche" id="popupNotifiche">
+            <table id="notifiche"></table>
+            <p id="noNotifiche" hidden>non sono presenti notifiche</p>
+            <button id="btnSegnaComeLetto">elimina notifiche</button>
+            <button id="btnClosePopup">chiudi</button>
+        </div>
+        <div id="overlay"></div>
+
+        <div id="searchUtenti">
+            cerca utenti per avviare una nuova chat: <br>
+            <input type="text" name="search" id="search" placeholder="🔍"> <br>
+            <table id="utenti"></table>
+        </div>
+        <div id="chats">
+            <p>Le tue chat</p>
+            <table id="myChats"></table>
+        </div>
+    </body>
+    <script src="./js/config.js"></script>
+    <script src="./js/homepageUtente.js"></script>
+</html>
