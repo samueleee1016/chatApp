@@ -493,20 +493,20 @@ pm2 startup
 - [ ] Video call 1-to-1
 - [ ] Dark mode
 
-### Miglioramenti tecnici
+<!-- ### Miglioramenti tecnici
 - [ ] Pagination messaggi (LIMIT/OFFSET)
 - [ ] Redis session store (scalabilità)
 - [ ] Testing automatizzato (Jest + Supertest)
 - [ ] Docker containerization
 - [ ] CI/CD pipeline
 - [ ] Prometheus metrics
-- [ ] Database migrations con Knex.js
+- [ ] Database migrations con Knex.js -->
 
-### Security enhancements
+<!-- ### Security enhancements
 - [ ] 2FA (Two-Factor Authentication)
 - [ ] End-to-end encryption
 - [ ] CAPTCHA su registrazione
-- [ ] Account verification via email
+- [ ] Account verification via email -->
 
 ## 👨‍💻 Autore
 
