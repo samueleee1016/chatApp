@@ -2,16 +2,16 @@
 
 Un'applicazione di messaggistica istantanea real-time costruita con Node.js, WebSocket e MySQL. Supporta chat 1-to-1, notifiche push, indicatori di lettura, e typing indicator.
 
-![ChatApp Homepage Preview](./screenshots/homepage)
-![ChatApp Registration Preview](./screenshots/registrazione)
-![ChatApp Login Preview](./screenshots/login_1)
-![ChatApp Login Preview](./screenshots/login_2)
-![ChatApp User Homepage Preview](./screenshots/homepage_utente_1)
-![ChatApp User Homepage Preview](./screenshots/homepage_utente_2)
-![ChatApp Notifications Preview](./screenshots/notifiche)
-![ChatApp Chat Preview](./screenshots/chat_1)
-![ChatApp Chat Preview](./screenshots/chat_2)
-![ChatApp Chat Preview](./screenshots/chat_3)
+![ChatApp Homepage Preview](./screenshots/homepage.png)
+![ChatApp Registration Preview](./screenshots/registrazione.png)
+![ChatApp Login Preview](./screenshots/login_1.png)
+![ChatApp Login Preview](./screenshots/login_2.png)
+![ChatApp User Homepage Preview](./screenshots/homepage_utente_1.png)
+![ChatApp User Homepage Preview](./screenshots/homepage_utente_2.png)
+![ChatApp Notifications Preview](./screenshots/notifiche.png)
+![ChatApp Chat Preview](./screenshots/chat_1.png)
+![ChatApp Chat Preview](./screenshots/chat_2.png)
+![ChatApp Chat Preview](./screenshots/chat_3.png)
 
 ## 📋 Indice
 - [Caratteristiche](#-caratteristiche)
