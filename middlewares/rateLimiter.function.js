@@ -4,12 +4,13 @@ const {RedisStore} = require('rate-limit-redis');
 const redis = require('redis');
 require('dotenv').config();
 
-const {REDIS_HOST, REDIS_PORT, REDIS_DB} = process.env;
+const {REDIS_HOST, REDIS_PORT, REDIS_DB, REDIS_PASSWORD} = process.env;
 
 const redisClient = redis.createClient({
     socket: {
         host: REDIS_HOST || 'localhost',
-        port: REDIS_PORT || 6379
+        port: REDIS_PORT || 6379,
+        password: REDIS_PASSWORD || undefined
     },
     password: undefined,
     database: parseInt(REDIS_DB) || 0
