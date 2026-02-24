@@ -162,7 +162,7 @@ SELECT
 FROM 
     information_schema.TABLES
 WHERE 
-    TABLE_SCHEMA = 'chat_app'
+    TABLE_SCHEMA = 'railway'
 ORDER BY 
     TABLE_NAME;
 
