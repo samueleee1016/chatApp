@@ -54,6 +54,7 @@ exports.registerLimiter = rateLimit({
 exports.globalLimiter = rateLimit({
     windowMs: 1 * 60 * 1000,
     max: 100,
+    validate: { xForwardedForHeader: false },
     handler: (req, res) => {
         console.log("Troppe richieste in questo minuto. Orario: ", new Date());
 
