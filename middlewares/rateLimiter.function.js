@@ -7,10 +7,11 @@ require('dotenv').config();
 const {REDIS_HOST, REDIS_PORT, REDIS_DB, REDIS_PASSWORD} = process.env;
 
 const redisClient = redis.createClient({
+    username: 'default',
+    password: REDIS_PASSWORD || undefined,
     socket: {
         host: REDIS_HOST || 'localhost',
-        port: REDIS_PORT || 6379,
-        password: REDIS_PASSWORD || undefined
+        port: REDIS_PORT || 6379
     },
     password: undefined,
     database: parseInt(REDIS_DB) || 0
