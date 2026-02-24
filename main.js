@@ -26,8 +26,9 @@ app.use(session({
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use('/chatApp', express.static(path.join(__dirname, 'public')));
-app.use('/chatApp', chatAppRoutes);
+// app.use('/chatApp', express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', chatAppRoutes);
 app.use(errorHandler);
 
 const {PORT} = process.env;
