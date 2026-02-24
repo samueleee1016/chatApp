@@ -4,7 +4,8 @@
   "description": "Chat app con registrazione e login, dove si possono cercare utenti, creare chat con loro, ricevere notifiche push per messaggi e nuove chat, aprire chat e chattare con altri utenti, vedere gli utenti online, vedere se qualcuno sta scrivendo, rispondere direttamente ad un messaggio, vedere quanti messaggi si hanno dalle altre chat, aprire direttamente una chat dalla notifica, leggere direttamente un messaggio dalla notifica",
   "main": "main.js",
   "scripts": {
-    "start": "nodemon main.js"
+    "start": "node main.js",
+    "dev": "nodemon main.js"
   },
   "keywords": [],
   "author": "Samuele Mastrovincenzo",
