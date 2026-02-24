@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+app.set('trust proxy', 1);
 const session = require('express-session');
 const http = require('http');
 const path = require('path');
