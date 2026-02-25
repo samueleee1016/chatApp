@@ -265,7 +265,7 @@ function fSendMessage(fromBtn, key)
                 }
         }, 3000);
 
-        if(message == "" && isTyping)
+        if(message === "" && isTyping)
             {
             isTyping = false;
             clearTimeout(typingTimeout);
@@ -303,6 +303,8 @@ function fSendMessage(fromBtn, key)
         }));
         }
     messageField.value = "";
+    isTyping = false;
+    clearTimeout(typingTimeout);
     ws.send(JSON.stringify({
         type: "IM_NOT_TYPING",
         myUsername: myUsername,
