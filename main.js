@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+app.set('trust proxy', true);
 const session = require('express-session');
 const {RedisStore} = require('connect-redis');
 const redis = require('redis');
