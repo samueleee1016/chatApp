@@ -13,6 +13,10 @@ const staScrivendo = document.querySelector('#staScrivendo');
 
 closeResponseToMessage.addEventListener('click', fCloseResponseDiv);
 
+ws.onopen = () => {
+    fGetUsernames();
+}
+
 ws.onmessage = (msg) => {
     try
         {

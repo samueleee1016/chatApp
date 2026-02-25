@@ -18,6 +18,10 @@ btnNotifiche.addEventListener('click', fPopupNotifications);
 btnSegnaComeLetto.addEventListener('click', fRemoveNotifications)
 search.addEventListener('keyup', fSearch);
 
+ws.onopen = () => {
+    fLoadUsername();
+}
+
 ws.onmessage = (msg) => {
     try
         {
