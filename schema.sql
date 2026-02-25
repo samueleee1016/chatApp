@@ -18,7 +18,7 @@ CREATE DATABASE IF NOT EXISTS `chat_app`
 DEFAULT CHARACTER SET utf8mb4 
 COLLATE utf8mb4_unicode_ci;
 
--- USE `chat_app`;
+USE `chat_app`;
 
 -- ============================================
 -- TABELLA: utenti
@@ -162,7 +162,7 @@ SELECT
 FROM 
     information_schema.TABLES
 WHERE 
-    TABLE_SCHEMA = 'railway'
+    TABLE_SCHEMA = 'chat_app'
 ORDER BY 
     TABLE_NAME;
 
