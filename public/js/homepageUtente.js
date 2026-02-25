@@ -13,6 +13,8 @@ const overlay = document.querySelector('#overlay');
 const nNotifiche = document.querySelector('#nNotifiche');
 const popupAlert = document.querySelector('#popup');
 var search = document.querySelector('#search');
+const logout = document.querySelector('#logout');
+logout.setAttribute('href', `${API_BASE}/homepage`);
 
 btnNotifiche.addEventListener('click', fPopupNotifications);
 btnSegnaComeLetto.addEventListener('click', fRemoveNotifications)

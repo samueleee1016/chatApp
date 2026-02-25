@@ -10,6 +10,8 @@ const responseToMessagePar = document.querySelector('#responseToMessagePar');
 const closeResponseToMessage = document.querySelector('#closeResponseToMessage');
 const noOtherChats = document.querySelector('#noOtherChats');
 const staScrivendo = document.querySelector('#staScrivendo');
+const back = document.querySelector('#back');
+back.setAttribute('href', `${API_BASE}/homepageUtente`);
 
 closeResponseToMessage.addEventListener('click', fCloseResponseDiv);
 
