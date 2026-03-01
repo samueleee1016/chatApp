@@ -29,6 +29,6 @@ router.get('/myChats/loadUsernames', controller.loadMyChatUsernames);
 
 router.all(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, '../public/getAll.html'));
-})
+});
 
 module.exports = router;

@@ -1,4 +1,3 @@
-const path = require('path');
 const service = require('../services/service');
 const HttpError = require('../errors/httpError');
 
