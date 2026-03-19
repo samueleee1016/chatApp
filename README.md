@@ -93,7 +93,7 @@ redis-server --version # v6.0.0+
 
 ### 1. Clona il repository
 ```bash
-git clone https://github.com/tuousername/chatApp.git
+git clone https://github.com/samueleee1016/chatApp.git
 cd chatApp
 ```
 
@@ -417,7 +417,7 @@ done
 
 ## 🌐 Deploy
 
-### Opzione 1: Railway (Consigliato)
+### Opzione consigliata: Railway 
 
 ```bash
 # Installa Railway CLI
@@ -444,7 +444,7 @@ railway up
 2. Aggiungi tutte le variabili da `.env`
 3. Railway auto-configura `DATABASE_URL` e `REDIS_URL`
 
-### Opzione 2: Render
+<!-- ### Opzione 2: Render
 
 1. Crea account su [Render](https://render.com)
 2. New → Web Service
@@ -462,7 +462,7 @@ railway up
 git push origin main
 
 # Sul server
-git clone https://github.com/tuousername/chatApp.git
+git clone https://github.com/samueleee1016/chatApp.git
 cd chatApp
 npm install --production
 
@@ -472,7 +472,7 @@ npm install -g pm2
 # Avvia con PM2
 pm2 start main.js --name chatApp
 pm2 save
-pm2 startup
+pm2 startup -->
 ```
 
 ### Post-Deploy Checklist
