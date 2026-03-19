@@ -472,8 +472,8 @@ npm install -g pm2
 # Avvia con PM2
 pm2 start main.js --name chatApp
 pm2 save
-pm2 startup -->
-```
+pm2 startup 
+``` -->
 
 ### Post-Deploy Checklist
 - ✅ Configura tutte le variabili d'ambiente
