@@ -91,8 +91,8 @@ exports.initWebSocket = (server) => {
                 {
                 clients.delete(ws.username);
                 socketFunctions.setUserOffline(ws.username);
+                console.log("Utente " + ws.username + " disconnesso da Web Socket");
                 }
-            console.log("Web socket disconnessa");
         });
 
         ws.on('error', (err) => {
