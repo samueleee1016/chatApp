@@ -9,7 +9,6 @@ exports.initWebSocket = (server) => {
     wss = new WebSocket.Server({server});
 
     wss.on('connection', (ws) => {
-        console.log("Web socket connessa");
         ws.on('message', async (msg) => {
             try
                 {
@@ -20,6 +19,7 @@ exports.initWebSocket = (server) => {
                     case "INIT":
                         clients.set(data.username, ws);
                         ws.username = data.username;
+                        console.log("Connessione a Web Socket dall'utente " + data.username);
                         socketFunctions.setUserOnline(data.username, data.from, exports.fSendToUser);
                         break;
                     case "CHECK_USERNAME":
