@@ -53,7 +53,7 @@ exports.deleteAccountService = async (username) => {
             for(let i=result1.length;i<totLength;i++)
                 usernames[i] = result2[(i-result1.length)].username_utente2;
 
-            const dataToSend = {
+            let dataToSend = {
                 type: "LOAD_NOTIFICATIONS"
             };
             for(let i=0;i<totLength;i++)
@@ -61,6 +61,10 @@ exports.deleteAccountService = async (username) => {
                 let sql = "insert into notifiche (username, testo, type) values(?, ?, ?)";
                 let params = [usernames[i], `${username} ha eliminato il suo account`, 'deleted_account'];
                 await pool.execute(sql, params);
+                fSendToUser(usernames[i], dataToSend);
+                dataToSend = {
+                    type: "LOAD_CHATS"
+                };
                 fSendToUser(usernames[i], dataToSend);
                 }
             }
