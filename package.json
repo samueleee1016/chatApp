@@ -1,10 +1,10 @@
 {
   "name": "chatapprealtime",
   "version": "1.0.0",
-  "description": "Chat app con registrazione e login, dove si possono cercare utenti, creare chat con loro, ricevere notifiche push per messaggi e nuove chat, aprire chat e chattare con altri utenti, vedere gli utenti online, vedere se qualcuno sta scrivendo, rispondere direttamente ad un messaggio, vedere quanti messaggi si hanno dalle altre chat, aprire direttamente una chat dalla notifica, leggere direttamente un messaggio dalla notifica",
+  "description": "Chat app con registrazione e login, dove si possono cercare utenti, creare chat con loro, ricevere notifiche push per messaggi e nuove chat, aprire chat e chattare con altri utenti, vedere gli utenti online, vedere se qualcuno sta scrivendo, rispondere direttamente ad un messaggio, vedere quanti messaggi si hanno dalle altre chat, aprire direttamente una chat dalla notifica, leggere direttamente un messaggio dalla notifica, eliminare il proprio account in sicurezza",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js",
+    "start": "nodemon main.js",
     "dev": "nodemon main.js"
   },
   "keywords": [],

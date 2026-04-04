@@ -9,7 +9,7 @@
             <form action="http://localhost:3000/chatApp/checkLogin" method="post" onsubmit="fValidateDatas(event)" id="dataForm">
                 <input type="text" name="username" id="username" placeholder="username" min="3" max="30"> <br>
                 <p id="errorChar" hidden>l'username deve contenere almeno una lettera</p>
-                <input type="password" name="psw" id="psw" placeholder="password" min="6" max="64"> <br>
+                <input type="password" name="psw" id="psw" placeholder="password" minlength="6" maxlength="64"> <br>
                 <p id="errorCharPsw" hidden>La password deve essere minimo di 6 caratteri e non può contenere i caratteri: ` “ ‘ < > ; , </p>
                 <p id="unvalidData" hidden>dati non validi, verifica che username e password siano corretti poi invia di nuovo i dati</p>
                 <p id="validData" hidden>dati validati, ora puoi accedere</p>

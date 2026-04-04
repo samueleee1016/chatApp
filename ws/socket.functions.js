@@ -1,7 +1,8 @@
 const pool = require('../db/pool');
 const HttpError = require('../errors/httpError');
 const hashPassword = require('../middlewares/hashPassword.function');
-const wsRateLimiter = require('../middlewares/wsLoginLimiter');
+const {wsRateLimiter} = require('../middlewares/wsLoginLimiter');
+const {wsRateLimiterDeleteAccount} = require('../middlewares/wsLoginLimiter');
 
 exports.fCheckUsername = async (username) => {
     const sql = "select username from utenti where username = ?";
@@ -46,7 +47,7 @@ exports.fValidateAccess = async (username, psw) => {
     const checkPsw = await hashPassword.verifyPassword(psw, hashToCompare);
     
     if(checkPsw && result.length > 0)
-        wsRateLimiter.reset(username)
+        wsRateLimiter.reset(username);
 
     return {
         type: "RESULT_VERIFY_ACCESS",
@@ -426,4 +427,39 @@ exports.fImNotTyping = async (myUsername, otherUsername, fSendToUser) => {
         };
     
     fSendToUser(otherUsername, dataToSend);
+}
+
+exports.checkPswForDelete = async (psw, username) => {
+    const rateLimitCheck = wsRateLimiterDeleteAccount.check(username);
+
+    if(!rateLimitCheck.allowed)
+        {
+        const minutiRimasti = Math.ceil((rateLimitCheck.resetAt - new Date()) / 60000);
+        
+        return {
+            type: "RESULT_VERIFY_PSW_FOR_DELETE",
+            success: false,
+            rateLimit: {
+                msg: "Rate limited",
+                minutiRimasti: minutiRimasti,
+                resetAt: rateLimitCheck.resetAt
+            }
+        };
+        }
+
+    const sql = "select username, password_hash from utenti where username = ?";
+    const [result] = await pool.execute(sql, [username]);
+
+    const FAKE_HASH = '$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy';
+    const hashToCompare = (result.length > 0) ? result[0].password_hash : FAKE_HASH;
+
+    const checkPsw = await hashPassword.verifyPassword(psw, hashToCompare);
+    
+    if(checkPsw && result.length > 0)
+        wsRateLimiterDeleteAccount.reset(username);
+
+    return {
+        type: "RESULT_VERIFY_PSW_FOR_DELETE",
+        success: checkPsw && result.length > 0
+    };
 }

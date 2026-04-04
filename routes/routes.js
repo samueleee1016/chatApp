@@ -3,7 +3,7 @@ const path = require('path');
 const router = express.Router();
 const controller = require('../controllers/controller');
 const checkRegistration = require('../middlewares/checkRegistration.middleware').checkRegistration;
-const {registerLimiter} = require('../middlewares/rateLimiter.function');
+const {registerLimiter, deleteLimiter} = require('../middlewares/rateLimiter.function');
 
 router.get('/homepage', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/homepage.html'));
@@ -25,6 +25,8 @@ router.get('/loadUsername', controller.loadUsername);
 router.get('/myChats/:myUsername/:otherUsername', controller.loadMyChat);
 
 router.get('/myChats/loadUsernames', controller.loadMyChatUsernames);
+
+router.delete('/deleteAccount/:username', deleteLimiter, controller.deleteAccount);
 
 
 router.all(/.*/, (req, res) => {

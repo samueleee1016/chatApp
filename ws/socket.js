@@ -19,7 +19,10 @@ exports.initWebSocket = (server) => {
                     case "INIT":
                         clients.set(data.username, ws);
                         ws.username = data.username;
-                        console.log("Connessione a Web Socket dall'utente " + data.username);
+                        
+                        let now = new Date().toLocaleString();
+                        console.log("Connessione a Web Socket dall'utente " + data.username + " --- " + now);
+
                         socketFunctions.setUserOnline(data.username, data.from, exports.fSendToUser);
                         break;
                     case "CHECK_USERNAME":
@@ -76,6 +79,10 @@ exports.initWebSocket = (server) => {
                     case "IM_NOT_TYPING":
                         await socketFunctions.fImNotTyping(data.myUsername, data.otherUsername, exports.fSendToUser);
                         break;
+                    case "CHECK_PSW_FOR_DELETE":
+                        const checkPswForDeleteResult = await socketFunctions.checkPswForDelete(data.psw, data.username);
+                        ws.send(JSON.stringify(checkPswForDeleteResult));
+                        break;
                     default:
                         break;
                     }
@@ -91,7 +98,8 @@ exports.initWebSocket = (server) => {
                 {
                 clients.delete(ws.username);
                 socketFunctions.setUserOffline(ws.username);
-                console.log("Utente " + ws.username + " disconnesso da Web Socket");
+                let now = new Date().toLocaleString();
+                console.log("Utente " + ws.username + " disconnesso da Web Socket  --- " + now);
                 }
         });
 

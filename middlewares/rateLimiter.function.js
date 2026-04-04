@@ -61,3 +61,13 @@ exports.globalLimiter = rateLimit({
         return res.status(429).sendFile(path.join(__dirname, '../public/limiterResponse/rispostaGlobalLimiter.html'));
     }
 });
+
+exports.deleteLimiter = rateLimit({
+    windowMs: 5 * 60 * 1000,
+    max: 3,
+    handler: (req, res) => {
+        console.log("Troppi tentativi di eliminare un account dall'ip: ", req.ip);
+
+        return res.status(429).sendFile(path.join(__dirname, '../public/limiterResponse/rispostaDeleteLimiter.html'));
+    }
+})

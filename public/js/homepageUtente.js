@@ -15,6 +15,24 @@ const popupAlert = document.querySelector('#popup');
 var search = document.querySelector('#search');
 const logout = document.querySelector('#logout');
 logout.setAttribute('href', `${API_BASE}/homepage`);
+const deleteAccountBtn = document.querySelector('#deleteAccountBtn');
+const divMouseOverDelete = document.querySelector('#mouseOverDeleteAccount');
+var blockDiv = false;
+const deleteAccountPopup = document.querySelector('#deleteAccountPopup');
+const questionPopup = document.querySelector('#questionPopup');
+const deleteYesBtn = document.querySelector('#deleteYes');
+const deleteNoBtn = document.querySelector('#deleteNo');
+const verifyPswForDeletePopup = document.querySelector('#verifyPswForDelete');
+const pswForDelete = document.querySelector('#pswForDelete');
+const errorParPsw = document.querySelector('#errorParPsw');
+const rateLimitDeletePsw = document.querySelector('#rateLimitDeletePsw');
+const formUltimaVerifica = document.querySelector('#formUltimaVerifica');
+const divUltimaVerifica = document.querySelector('#divUltimaVerifica');
+const confirmDeleteAccountBtn = document.querySelector('#deleteAccount');
+const annulla = document.querySelector('#annulla');
+const sendPsw = document.querySelector('#sendPsw');
+const parPsw = document.querySelector('#parPsw');
+const chiudiPopupPsw = document.querySelector('#chiudiPopupPsw');
 
 btnNotifiche.addEventListener('click', fPopupNotifications);
 btnSegnaComeLetto.addEventListener('click', fRemoveNotifications)
@@ -53,6 +71,9 @@ ws.onmessage = (msg) => {
             case "LOAD_CHATS":
                 fLoadChats();
                 break;
+            case "RESULT_VERIFY_PSW_FOR_DELETE":
+                fCheckPswResult(data.success, data.rateLimit);
+                break;
             default:
                 break;
             }
@@ -68,6 +89,80 @@ ws.onerror = (err) => {
     console.error("Web socket error from client: ", err);
     throw new HttpError(err.message, err.status ?? 1011);
 };
+
+deleteAccountBtn.addEventListener('mouseover', showQuestionPopup);
+deleteAccountBtn.addEventListener('mouseout', hideQuestionPopup);
+deleteAccountBtn.addEventListener('click', showDeletePopup);
+chiudiPopupPsw.addEventListener('click', hideDeletePopup);
+annulla.addEventListener('click', hideDeletePopup);
+
+function showQuestionPopup()
+    {
+    if(!blockDiv)
+        divMouseOverDelete.removeAttribute('hidden');
+    }
+function hideQuestionPopup()
+    {
+    if(!blockDiv)
+        divMouseOverDelete.setAttribute('hidden', 'yes');
+    }
+function showDeletePopup()
+    {
+    divMouseOverDelete.setAttribute('hidden', 'yes');
+    blockDiv = true;
+    deleteAccountPopup.removeAttribute('hidden');
+    overlay.style.display = 'block';
+    }
+
+deleteYesBtn.addEventListener('click', startDeleting);
+deleteNoBtn.addEventListener('click', hideDeletePopup);
+
+function startDeleting()
+    {
+    questionPopup.setAttribute('hidden', 'yes');
+    verifyPswForDeletePopup.removeAttribute('hidden');
+    sendPsw.removeEventListener('click', fCheckPswForDelete);
+    sendPsw.addEventListener('click', fCheckPswForDelete);
+    }
+function hideDeletePopup()
+    {
+    deleteAccountPopup.setAttribute('hidden', 'yes');
+    overlay.style.display = 'none';
+    blockDiv = false;
+    }
+
+function fCheckPswForDelete()
+    {
+    let psw = pswForDelete.value.trim();
+    if(!psw) return;
+
+    ws.send(JSON.stringify({
+        type: "CHECK_PSW_FOR_DELETE",
+        psw: psw,
+        username: username
+    }));
+    }
+
+function fCheckPswResult(success, rateLimit)
+    {
+    if(!success && !rateLimit)
+        errorParPsw.removeAttribute('hidden');
+    else if(rateLimit)
+        {
+        errorParPsw.setAttribute('hidden', 'yes');
+        pswForDelete.setAttribute('hidden', 'yes');
+        sendPsw.setAttribute('hidden', 'yes');
+        parPsw.setAttribute('hidden', 'yes');
+        rateLimitDeletePsw.innerHTML = `Limite di tentativi per la password superati, riprova tra ${rateLimit.minutiRimasti} minuti`;
+        rateLimitDeletePsw.removeAttribute('hidden');
+        }
+    else
+        {
+        verifyPswForDeletePopup.setAttribute('hidden', 'yes');
+        divUltimaVerifica.removeAttribute('hidden');
+        }
+
+    }
 
 function fLoadNotifications()
     {
@@ -130,7 +225,7 @@ function fLoadNotificationResult(success, result)
                 }));
             });
             }
-        else
+        else if(result[i].type == 'new_chat')
             {
             btnViewNotification.innerHTML = "ok";
             let otherUsername = result[i].testo.substring(0, result[i].testo.indexOf(' ha creato'));
@@ -152,6 +247,13 @@ function fLoadNotificationResult(success, result)
             })
             btnNotificationOpenChat.appendChild(a);
             
+            btnViewNotification.addEventListener('click', function() {
+                fRemoveNotification(this.id);
+            });
+            }
+        else
+            {
+            btnViewNotification.innerHTML = "ok";
             btnViewNotification.addEventListener('click', function() {
                 fRemoveNotification(this.id);
             });
@@ -356,6 +458,27 @@ async function fLoadUsername()
             fLoadChats();
             fInit();
             fLoadNotifications();
+            formUltimaVerifica.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const url = `${API_BASE}/deleteAccount/${username}`;
+                try 
+                    {
+                    const response = await fetch(url, {method: 'DELETE'});
+
+                    if(response.ok) 
+                        window.location.href = `${API_BASE}/homepage`;
+                    else
+                        {
+                        console.error("Errore durante l'eliminazione dell'account");
+                        alert("Errore durante l'eliminazione dell'account, riprovare");
+                        }
+                    } 
+                catch(err) 
+                    {
+                    console.error("Errore durante la richiesta di delete: ", err);
+                    }
+            });
             }
         }
     catch (err) 

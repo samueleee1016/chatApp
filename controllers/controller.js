@@ -39,3 +39,10 @@ exports.loadMyChatUsernames = (req, res) => {
         res.status(401).json({error: error});
         }
 }
+
+exports.deleteAccount = (req, res) => {
+    if(req.session.username != req.params.username)
+        throw new HttpError("ERRORE, userame non corrispondono in controller delete account");
+    const result = service.deleteAccountService(req.params.username);
+    res.status(200).redirect('/chatApp/homepage');
+}

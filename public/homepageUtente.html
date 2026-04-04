@@ -5,6 +5,30 @@
     </head>
     <body>
         <a class="card" id="logout">Logout</a>
+        <button id="deleteAccountBtn">🗑️</button>
+        <div id="mouseOverDeleteAccount" hidden>clicca qui per eliminare il tuo account (l'eliminazione prevede verifica con password)</div>
+        <div class="deleteAccountPopup" id="deleteAccountPopup" hidden>
+            <div id="questionPopup">
+                <p id="deleteQuestion">Sei sicuro di voler eliminare il tuo account?</p> <br>
+                <button id="deleteYes">si</button>
+                <button id="deleteNo">no</button>
+            </div>
+            <div id="verifyPswForDelete" hidden>
+                <p id="parPsw">Inserisci la tua password qui sotto per eliminare l'account</p> <br>
+                <input type="password" id="pswForDelete" placeholder="•••••••••" maxlength="64" minlength="6"> <br>
+                <p id="errorParPsw" hidden>password errata, riprova</p>
+                <p id="rateLimitDeletePsw" hidden></p>
+                <button id="sendPsw">verifica</button>
+                <button id="chiudiPopupPsw">chiudi</button>
+            </div>
+            <div id="divUltimaVerifica" hidden>
+                <form id="formUltimaVerifica">
+                    <p id="ultimaVerifica">Stai eliminando il tuo account: </p>
+                    <button id="deleteAccount" type="submit">conferma eliminazione account</button>
+                    <button id="annulla" type="button">annulla</button>
+                </form>
+            </div>
+        </div>
 
         <h4>Profilo di <span id="username"></span></h4>
 

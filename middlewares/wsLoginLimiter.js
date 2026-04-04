@@ -80,5 +80,6 @@ class webSocketRateLimiter {
 }
 
 const wsRateLimiter = new webSocketRateLimiter();
+const wsRateLimiterDeleteAccount = new webSocketRateLimiter();
 
-module.exports = wsRateLimiter;
+module.exports = {wsRateLimiter, wsRateLimiterDeleteAccount};
