@@ -513,7 +513,7 @@ railway run mysql --host=$MYSQLHOST --user=$MYSQLUSER --password=$MYSQLPASSWORD 
 
 ## 👨‍💻 Autore
 
-**Samuele Bevilacqua**
+**Samuele Mastrovincenzo**
 
 - 🐙 GitHub: [@samueleee1016](https://github.com/samueleee1016)
 
